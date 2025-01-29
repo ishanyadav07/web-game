@@ -5,11 +5,12 @@ let gameMusic= new Audio('music/music.mp3');
 let foodsound= new Audio('music/food.mp3');
 let movesound= new Audio('music/move.mp3');
 let gameoversound= new Audio('music/gameover.mp3');
-let speed = 20;
+let speed = 12;
 let score = 0;
 let lastPaintTime = 0;             //last time frame painted
 let snakeArr = [ {x:13, y:15} ]
-food = {x:10, y:10}
+ let food = {x:10, y:10}
+
 
 //game functions
 function main(ctime){
@@ -21,6 +22,7 @@ if((ctime - lastPaintTime)/1000 < 1/speed){          // 1/speed is the seconds p
      gameEngine();
   
 }
+
 
 function isCollide(snake) {
     // if u bump into your self
@@ -38,7 +40,7 @@ function isCollide(snake) {
 
 
 function gameEngine(){
-    //part1 : updating the snake array and food
+    
     if(isCollide(snakeArr)){
         gameoversound.play();
         gameMusic.pause();
@@ -49,9 +51,8 @@ function gameEngine(){
         score = 0;
         scorecard.innerHTML = "score : " + score;
 
-
-
     }
+
 
     //if food has eaten ,increment the score and regenerate the food
     if (snakeArr[0].y=== food.y && snakeArr[0].x === food.x) {
@@ -70,7 +71,11 @@ function gameEngine(){
          
     }
 
+
+
+
     //moving the  snake
+    //part1 : updating the snake array and food
     for (let i = snakeArr.length - 2; i>=0 ; i--){            //the last sec element in the snakeArray
         snakeArr[i+1] = {...snakeArr[i]};
        
@@ -81,13 +86,7 @@ function gameEngine(){
 
 
 
-
-
-
-
-
-
-    //part2 : display the snake and food
+   //part2 : display the snake and food
     // display the snake
     board.innerHTML = "";
     snakeArr.forEach((e, index)=>{
@@ -112,10 +111,6 @@ function gameEngine(){
         foodElement.classList.add("food")
         board.appendChild(foodElement);
 }
-
-
-
-
 
 
 //all game logic
