@@ -41,12 +41,11 @@
 .head{
     background-color: #f2d492;
 
-    
+    border: 2px solid lightseagreen;
     border-radius: 2ch;
 
 }
 .snake{background-color: #202c39;
-    border: 2px solid lightseagreen;
     border-radius: 1ch;
 
 }
